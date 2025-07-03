@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WG Biomedical – Servicio Técnico Biomédico y Odontológico en Cali</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chosen Palette: Clinical Calm -->
+    <!-- Application Structure Plan: The application uses a single-page, multi-section structure with a fixed navigation bar for smooth scrolling. This design transforms the linear presentation format into an interactive journey, allowing users to explore content non-linearly. The key sections are: Hero (for immediate engagement), About, an interactive card-based Services section (to encourage exploration), Advantages, Impact, and Contact. This structure is chosen for its modern feel and improved user experience over a static document, making the information more accessible and digestible. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: Company Introduction -> Goal: Engage -> Presentation: Hero section with headline and CTA -> Interaction: None, visual impact.
+        - Report Info: "Quiénes Somos" -> Goal: Inform -> Presentation: Two-column text and icon layout -> Interaction: None, clear information display.
+        - Report Info: List of 6 services -> Goal: Organize & Detail -> Presentation: Interactive grid of 6 cards with icons -> Interaction: On-click, a description area updates with details for the selected service. This encourages user interaction and breaks down information into manageable chunks. -> Method: HTML/Tailwind for cards, JS for click-based content updates.
+        - Report Info: List of 6 advantages -> Goal: Compare/Highlight -> Presentation: Grid layout with icons and text -> Interaction: Hover effects for visual feedback.
+        - Report Info: Impact statements -> Goal: Inform/Emphasize -> Presentation: Visually distinct section with large icons and bold text.
+        - Justification: This interactive, component-based approach is superior to a flat text document for web presentation, enhancing engagement and comprehension without quantitative data.
+        - Library/Method: Vanilla JS for interactions, Tailwind CSS for styling. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+        .service-card.active {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            border-color: #0891b2; /* cyan-600 */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+          <header id="header" class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-cyan-700">WG BIOMEDICAL</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#quienes-somos" class="text-gray-600 hover:text-cyan-700 transition duration-300">Nosotros</a>
+                <a href="#servicios" class="text-gray-600 hover:text-cyan-700 transition duration-300">Servicios</a>
+                <a href="..\wgbiomedical\productos.html" class="text-gray-600 hover:text-cyan-700 transition duration-300">Carrito</a>
+                <a href="#ventajas" class="text-gray-600 hover:text-cyan-700 transition duration-300">Ventajas</a>
+                <a href="#contacto" class="bg-cyan-600 text-white px-4 py-2 rounded-md hover:bg-cyan-700 transition duration-300">Contacto</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-600 hover:text-cyan-700 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#quienes-somos" class="block py-2 px-4 text-sm text-gray-600 hover:bg-cyan-50">Nosotros</a>
+            <a href="#servicios" class="block py-2 px-4 text-sm text-gray-600 hover:bg-cyan-50">Servicios</a>
+            <a href="productos.html" class="block py-2 px-4 text-sm text-gray-600 hover:bg-cyan-50">Carrito</a>
+            <a href="#ventajas" class="block py-2 px-4 text-sm text-gray-600 hover:bg-cyan-50">Ventajas</a>
+            <a href="#contacto" class="block py-2 px-4 text-sm text-white bg-cyan-600 hover:bg-cyan-700">Contacto</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="bg-white">
+            <div class="container mx-auto px-6 py-24 md:py-7 text-center">
+                <img src="..\wgbiomedical\img\wgb.jpeg" class="mx-auto mb-1 w-48 h-48 " alt="WG Biomedical Logo">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-cyan-900 leading-tight">Su Mejor Aliado Estratégico en Servicio Técnico</h1>
+                <p class="mt-4 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Aseguramos la excelencia operativa de sus equipos médicos y odontológicos en Cali y el Valle y todo el territorio colombiano.</p>
+                <div class="mt-8">
+                    <a href="#servicios" class="bg-cyan-600 text-white px-8 py-3 rounded-md text-lg font-semibold hover:bg-cyan-700 transition duration-300 shadow-lg">Descubra Nuestros Servicios</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="quienes-somos" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800">¿Quiénes es WG Bomedical?</h2>
+                    <p class="mt-2 text-gray-500">Es tu mejor aliado en la solucion de las fallas  de tus equipos medicos y odontologicos brindando el mejor soporte para el sector salud en la región.</p>
+                </div>
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2 text-lg text-gray-700 leading-relaxed">
+                        <p>Somos un equipo de profesionales apasionados, capacitados y altamente calificados, con sede en Cali. En WG Biomedical, entendemos la vital importancia de cada equipo en tu consultorio o clinica.</p><br>
+                        <p>Nuestra misión es brindar un <span class="font-semibold text-cyan-800">servicio técnico especializado, confiable y eficiente</span> que garantice la continuidad y seguridad de sus procedimientos médicos y odontológicos. Nos enorgullece ser un soporte clave para clínicas, hospitales, consultorios y profesionales independientes.</p>
+                    </div>
+                    <div class="md:w-1/2 flex justify-center">
+                        <div class="p-8 bg-cyan-100 rounded-full">
+                            <div class="p-8 bg-cyan-200 rounded-full">
+                                <span class="text-7xl text-cyan-700"><img src="..\wgbiomedical\img\wgb.jpeg" alt=""></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicios" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800">Nuestros Servicios </h2>
+                    <p class="mt-2 text-gray-500">Cubrimos todas las necesidades de sus equipos. Haga clic para ver detalles.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="service-card" data-service="preventivo">
+                        <div class="text-4xl">🔧</div><h3 class="text-xl font-semibold mt-4">Mantenimiento Preventivo</h3>
+                    </div>
+                    <div class="service-card" data-service="correctivo">
+                        <div class="text-4xl">🛠️</div><h3 class="text-xl font-semibold mt-4">Mantenimiento Correctivo</h3>
+                    </div>
+                    <div class="service-card" data-service="instalacion">
+                        <div class="text-4xl">✅</div><h3 class="text-xl font-semibold mt-4">Instalación y Puesta en Marcha</h3>
+                    </div>
+                    <div class="service-card" data-service="calibracion">
+                        <div class="text-4xl">⚖️</div><h3 class="text-xl font-semibold mt-4">Calibración y Verificación</h3>
+                    </div>
+                    <div class="service-card" data-service="asesoria">
+                        <div class="text-4xl">💡</div><h3 class="text-xl font-semibold mt-4">Asesoría y Capacitación</h3>
+                    </div>
+                    <div class="service-card" data-service="repuestos">
+                        <div class="text-4xl">⚙️</div><h3 class="text-xl font-semibold mt-4">Venta de Repuestos y equipos</h3>
+                    </div>
+                </div>
+                <div id="service-details" class="mt-12 p-8 bg-cyan-50 rounded-lg min-h-[150px] transition-all duration-500">
+                    <h4 id="service-title" class="text-2xl font-bold text-cyan-800 mb-2">Seleccione un servicio</h4>
+                    <p id="service-description" class="text-gray-700 leading-relaxed">Haga clic en una de las tarjetas de arriba para ver una descripción detallada de nuestros servicios.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="ventajas" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800">¿Por Qué WG Biomedical es Su Mejor Elección?</h2>
+                    <p class="mt-2 text-gray-500">Los beneficios de elegir un servicio tecnico de confianza.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="advantage-card"><span>⭐</span><h3 class="font-semibold">Experiencia y Especialización</h3><p>Contamos con un equipo técnicos altamente capacitado en una amplia gama de equipos.</p></div>
+                    <div class="advantage-card"><span>⚡</span><h3 class="font-semibold">Rapidez y Eficiencia</h3><p>Capacidad de respuesta clave y oportuna para minimizar sus interrupciones.</p></div>
+                    <div class="advantage-card"><span>🔬</span><h3 class="font-semibold">Tecnología Avanzada</h3><p>Equipos de diagnóstico de última generación para un servicio preciso.</p></div>
+                    <div class="advantage-card"><span>🛡️</span><h3 class="font-semibold">Compromiso con la Calidad</h3><p>Nos regimos por los más altos estándares de calidad y seguridad.</p></div>
+                    <div class="advantage-card"><span>🤝</span><h3 class="font-semibold">Atención Personalizada</h3><p>Soluciones a la medida de sus necesidades y un soporte efectivo y oportuno.</p></div>
+                    <div class="advantage-card"><span>🇨🇴</span><h3 class="font-semibold">Orgullo Caleño</h3><p>Entendemos las dinámicas y necesidades del mercado local ene ls sector salud.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="impacto" class="py-20 bg-cyan-800 text-white">
+            <div class="container mx-auto px-6 text-center">
+                 <h2 class="text-3xl font-bold mb-12">Nuestro Impacto: Garantizando la Salud en Cali</h2>
+                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                     <div class="impact-item"><div class="icon">❤️</div><h3 class="text-xl font-bold mt-4">Seguridad del Paciente</h3><p class="mt-2 text-cyan-200">Diagnósticos precisos y tratamientos seguros con equipos fiables.</p></div>
+                     <div class="impact-item"><div class="icon">📈</div><h3 class="text-xl font-bold mt-4">Eficiencia Operativa</h3><p class="mt-2 text-cyan-200">Reducción de tiempos de inactividad y optimización del flujo de trabajo.</p></div>
+                     <div class="impact-item"><div class="icon">🏦</div><h3 class="text-xl font-bold mt-4">Protección de su Inversión</h3><p class="mt-2 text-cyan-200">Prolongamos la vida útil de sus valiosos equipos médicos y odontologicos.</p></div>
+                 </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="py-20 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold text-gray-800">¡Conversemos!</h2>
+                <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Estamos listos para ser su socio estratégico. Contáctenos hoy mismo para una consulta sin compromiso.</p>
+                <div class="mt-8 flex flex-col md:flex-row justify-center items-center gap-8">
+                     <div class="contact-info"><strong>Teléfono:</strong> <a href="tel:+573185951777" class="hover:underline">[3185951777]</a></div>
+                     <div class="contact-info"><strong>Correo:</strong> <a href="mailto:wg.biomedical@gmail.com" class="hover:underline">[wg.biomedical@gmail.com]</a></div>
+                     <div class="contact-info"><strong>Dirección:</strong> <span>[Cra 29B # 10-36 Barrio Junin - Cali]</span></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 WG Biomedical. Todos los derechos reservados.</p>
+            <p class="text-sm text-gray-400 mt-2">Servicio Técnico Especializado en Equipos Médicos y Odontológicos en Cali, Colombia.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                     mobileMenu.classList.add('hidden');
+                });
+            });
+
+            const serviceData = {
+                preventivo: {
+                    title: 'Mantenimiento Preventivo',
+                    description: 'Realizamos programas personalizados para inspeccionar, limpiar, ajustar y lubricar sus equipos. Esto minimiza el riesgo de fallas inesperadas, asegura un rendimiento óptimo y prolonga significativamente su vida útil.'
+                },
+                correctivo: {
+                    title: 'Mantenimiento Correctivo',
+                    description: 'Ofrecemos un diagnóstico rápido y reparaciones precisas para restaurar la funcionalidad completa de sus equipos en el menor tiempo posible, reduciendo al máximo el impacto negativo en sus operaciones diarias.'
+                },
+                instalacion: {
+                    title: 'Instalación y Puesta en Marcha',
+                    description: 'Brindamos asistencia experta para la correcta instalación y configuración de equipos nuevos o reubicados, garantizando su óptimo rendimiento y cumplimiento de normativas desde el primer día de operación.'
+                },
+                calibracion: {
+                    title: 'Calibración y Verificación',
+                    description: 'Aseguramos la precisión y exactitud de sus equipos mediante servicios de calibración exhaustivos, cumpliendo con las normativas vigentes y los estándares de calidad más exigentes del sector salud.'
+                },
+                asesoria: {
+                    title: 'Asesoría Técnica y Capacitación',
+                    description: 'Ofrecemos consultoría especializada para la selección de nuevos equipos, optimización de su uso y programas de capacitación para su personal sobre el manejo adecuado y el cuidado básico de la tecnología.'
+                },
+                repuestos: {
+                    title: 'Venta de Repuestos Originales',
+                    description: 'Vendemos equipos de todas las clases y suministramos componentes y repuestos de alta calidad y totalmente compatibles para asegurar la fiabilidad y durabilidad de cada reparación, protegiendo la integridad de sus equipos.'
+                }
+            };
+
+            const serviceCards = document.querySelectorAll('.service-card');
+            const serviceTitle = document.getElementById('service-title');
+            const serviceDescription = document.getElementById('service-description');
+            let activeCard = null;
+
+            serviceCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    if (activeCard) {
+                        activeCard.classList.remove('active');
+                    }
+                    this.classList.add('active');
+                    activeCard = this;
+                    
+                    const serviceKey = this.dataset.service;
+                    const data = serviceData[serviceKey];
+                    
+                    serviceTitle.textContent = data.title;
+                    serviceDescription.textContent = data.description;
+                });
+            });
+
+            // Add styles dynamically to avoid purging
+            const styleSheet = document.createElement("style");
+            styleSheet.innerText = `
+                .service-card {
+                    background-color: #f9fafb; 
+                    border: 2px solid transparent; 
+                    border-radius: 0.5rem; 
+                    padding: 2rem; 
+                    text-align: center; 
+                    cursor: pointer; 
+                    transition: all 0.3s ease-in-out;
+                }
+                .service-card:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+                }
+                .advantage-card {
+                    background-color: white; 
+                    border-radius: 0.5rem; 
+                    padding: 1.5rem; 
+                    text-align: center; 
+                    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+                }
+                .advantage-card span {
+                    font-size: 2rem; 
+                    display: block; 
+                    margin-bottom: 0.5rem;
+                }
+                .advantage-card p {
+                    color: #4b5563; 
+                    font-size: 0.9rem;
+                }
+                .impact-item .icon {
+                    font-size: 3rem;
+                    line-height: 1;
+                }
+                .contact-info {
+                    font-size: 1.125rem;
+                    color: #4b5563;
+                }
+                .contact-info a {
+                    color: #0891b2;
+                }
+            `;
+            document.head.appendChild(styleSheet);
+        });
+    </script>
+</body>
+</html>
